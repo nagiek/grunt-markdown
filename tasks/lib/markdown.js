@@ -11,15 +11,12 @@
 // external libs
 var markdown = require('marked');
 var hljs = require('highlight.js');
-var _ = require('lodash');
 
 exports.init = function(grunt) {
   var exports = {};
 
   exports.markdown = function(src, options, template) {
 
-    var html = null;
-    var templateContext = null;
     var codeLines = options.codeLines;
     var shouldWrap = codeLines && codeLines.before && codeLines.after;
 
@@ -66,20 +63,7 @@ exports.init = function(grunt) {
 
     grunt.verbose.write('Marking down...');
 
-    if(_.isFunction(options.templateContext)) {
-      templateContext = options.templateContext();
-    } else {
-      templateContext = options.templateContext;
-    }
-
-    src = options.preCompile(src, templateContext) || src;
-    html = markdown(src);
-    html = options.postCompile(html, templateContext) || html;
-
-    templateContext.content = html;
-
-    src = _.template(template, templateContext);
-    return src;
+    return markdown(src);;
 
   };
 

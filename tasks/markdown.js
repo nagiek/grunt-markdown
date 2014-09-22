@@ -21,12 +21,7 @@ module.exports = function(grunt) {
       htmlExtension: 'html',
       markdownExtension: 'md',
       markdownOptions: {},
-      preCompile: noop,
-      postCompile: noop,
-      templateContext: {},
-      template: path.join(__dirname, 'template.html')
     });
-    var template = grunt.file.read(options.template);
 
     // Iterate over all specified file groups.
     grunt.util.async.forEachLimit(this.files, 25, function (file, next) {
@@ -36,8 +31,7 @@ module.exports = function(grunt) {
     function convert(src, dest, next){
       var content = markdown.markdown(
         grunt.file.read(src),
-        options,
-        template
+        options
       );
 
       grunt.file.write(dest, content);
