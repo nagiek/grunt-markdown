@@ -54,7 +54,7 @@
   ],
   "dependencies": {
     "highlight.js": "~7.3.0",
-    "marked": "https://github.com/nagiek/marked/tarball/b953d0409a6cf98c3d0047dee5adb81cdb3a7a47",
+    "marked": "git://github.com/nagiek/marked.git",
     "grunt-lib-contrib": "~0.3.0"
   }
 }
